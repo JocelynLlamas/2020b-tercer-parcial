@@ -3,6 +3,8 @@ package oop.exams.generator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import oop.exams.model.Region;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LicensePlateGeneratorFactoryTest {
@@ -80,8 +82,25 @@ class LicensePlateGeneratorFactoryTest {
             LicensePlateGenerator instance = licensePlateGeneratorFactory.getInstance(state);
 
             // Then:
-            assertThat(instance).isInstanceOf(DefaultLicensePlateGenerator.class);
+            assertThat(instance).isInstanceOf(CenterLicensePlateGenerator.class);
         }
+    }
+
+
+    @Test
+    public void givenARegion_whenGetInstance_thenRegionisReturned() {
+        //GIVEN
+
+        //WHEN
+        LicensePlateGenerator instancia = licensePlateGeneratorFactory.getInstance(Region.NORTH);
+        LicensePlateGenerator instancia1 = licensePlateGeneratorFactory.getInstance(Region.SOUTH);
+        LicensePlateGenerator instancia2 = licensePlateGeneratorFactory.getInstance(Region.EAST);
+        LicensePlateGenerator instancia3 = licensePlateGeneratorFactory.getInstance(Region.WEST);
+        //THEN
+        assertThat(instancia).isInstanceOf(NorthLicensePlateGenerator.class);
+        assertThat(instancia1).isInstanceOf(SouthLicensePlateGenerator.class);
+        assertThat(instancia2).isInstanceOf(EastLicensePlateGenerator.class);
+        assertThat(instancia3).isInstanceOf(WestLicensePlateGenerator.class);
     }
 
 }

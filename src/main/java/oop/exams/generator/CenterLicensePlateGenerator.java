@@ -1,0 +1,33 @@
+package oop.exams.generator;
+
+import java.util.Random;
+
+import oop.exams.exception.BadRegionException;
+import oop.exams.exception.NotAvailableLicensePlateException;
+
+public class CenterLicensePlateGenerator implements LicensePlateGenerator {
+
+    @Override
+    public String generate(String state) {
+        if(state.charAt(0) != 'X'){
+
+            String numerosValidos = "1234567890";
+            int total = numerosValidos.length();
+            int i;
+
+            String first = "5";
+            Random index = new Random();
+
+            for(i=0;i<7;i++){
+                first += numerosValidos.charAt(index.nextInt(total));
+            }
+            return first;
+
+           
+        
+        }
+        throw new BadRegionException("Allowed states: SLP, GTO, AGU, QRO, CDMX, DUR, HID, PUE, TLA, ZAC");
+        
+    }
+
+}

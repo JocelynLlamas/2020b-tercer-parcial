@@ -34,5 +34,6 @@ public class LicensePlateService {
         licensePlateRepository.save(region, licensePlate);
 
         return licensePlate;
+
     }
 }
