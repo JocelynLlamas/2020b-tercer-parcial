@@ -68,4 +68,5 @@ class LicensePlateServiceTest {
             //licensePlateService.generate(state);
         });
     }
+
 }
